@@ -92,9 +92,11 @@ for word in string.split():
 
 print(word_count)
 
+
 # 11. Write a program that converts a given string to title case (capitalize the first letter of each word).
 string = input("Enter a string: ")
 print(string.title())
+
 
 # 12. Create a function that calculates the total length of strings in a list.
 def total_length(list):
@@ -106,18 +108,21 @@ def total_length(list):
 strings = ["Hello", "World", "Python"]
 print(total_length(strings))
 
+
 # 13. Write a program that finds the most common element in a list.
 list = [9,1,0,6,6,2,0,8,2,1]
 
 for i in list:
     dict = {}
     if i in dict:
-        dict[i]+=1
+        dict[i] += 1
     else:
         dict[i]=1
 print(dict)
 max_count = max(dict.values())
-print(list[dict])
+for x in dict:
+    if dict[x] == max_count:
+        print(x)
 
     
 # 14. Create a function that checks if two lists have any common elements.
@@ -156,6 +161,7 @@ person = {'name': 'John',
 
 print(remove_key(person,'name'))
 
+
 # 17. Write a program that merges two dictionaries by adding their values for common keys.
 def merge_dictionaries(dict1, dict2):
     merged_dict = dict1.copy()
@@ -171,6 +177,7 @@ dict2 = {'b': 3, 'c': 4, 'd': 5}
 merged_dict = merge_dictionaries(dict1, dict2)
 print(merged_dict) 
 
+
 # 18. Create a function that takes a list of numbers and returns the cumulative sum.
 list = [9,1,0,6,6]
 
@@ -183,6 +190,16 @@ def  cum_sum(list):
     return result
 
 print(cum_sum(list))  
+
+
+# 19. Write a program that extracts all the email addresses from a given text.
+import re
+text = "Please send your resume to info@company.com or contact us at support@company.net. We will be in touch soon."
+
+text = "Please send your resume to info@company.com or john.doe@example.com"
+emails = re.findall('[\w\.-]+@[\w\.-]+\.\w+', text)
+print(emails)
+
     
 # 20. Create a function that calculates the average length of words in a given sentence.
 sentence = "Hello world! How are you today?"
@@ -207,16 +224,19 @@ set2 = set(list2)
 difference_list = list(set1.difference(set2))
 print(difference_list)
 
+
 # 22. Create a function that returns the elements that are common to two sets.
 def intersection(set1, set2):
     return list(set1.intersection(set2))
 
 print(intersection(set1, set2))
 
+
 # 23. Write a program that converts a list of strings into a single string with spaces between each word.
 strings = ["Hello", "World"]
 result = ' '.join(strings)
 print(result)
+
 
 # 24. Create a function that checks if a given string is a pangram (contains every letter of the alphabet at least once).
 def check_pangram():
@@ -233,7 +253,23 @@ def check_pangram():
         
 print(check_pangram())
 
+
 # 25. Write a program that finds the longest common prefix among a list of strings.
+def longest_common_prefix(strs):
+    shortest_str = min(strs)
+    # print(shortest_str)
+    for i, char in enumerate(shortest_str):
+        # print(i,char)
+        for other in strs:
+            # print(other)
+            if other[i] != char:
+                # print(shortest_str[:i])
+                return shortest_str[:i]
+    return shortest_str
+
+strs = ["flower", "flow", "flight"]
+print(longest_common_prefix(strs)) 
+
 
 # 26. Create a function that takes a list of numbers and returns the second largest number.
 list = [9,1,0,6,6]
@@ -248,13 +284,15 @@ def second_largest_number(list):
             
 print(second_largest_number(list))
 
+
 # 27. Write a program that converts a given string to lowercase and removes all punctuation marks.
 string = "Hello Everyone!!"
 string = string.lower()
 for i in string:
-    if i is not ('a' <= i <= 'z'):
-        string = string.replace(i,"")
+    if not ('a' <= i <= 'z'):
+        string = string.replace(i," ")
 print(string)
+
 
 # 28. Create a function that removes duplicates from a list while preserving the order.
 list = [1,2,3,4]

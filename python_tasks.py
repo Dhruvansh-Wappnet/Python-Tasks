@@ -1,13 +1,24 @@
 # 1. Create a program that prints the current date and time.
 import datetime
-current_time = datetime.datetime.now()
-print("Current Date & Time: ", current_time)
+current_date_time = datetime.datetime.now()
+print("Current Date & Time: ", current_date_time)
+
 
 # 2. Write a function to check if a given year is a leap year using the datetime module.
-def check_leap_year():
-    year = int(input("Enter a year: "))
+import datetime
+def check_leap_year(date):
+    if (date.year % 4 == 0 and date.year % 100 != 0) or (date.year % 400 == 0):
+        return True
+    else:
+        return False
+check_leap_year(datetime.datetime.today())
+
 
 # 3. Write a program that sorts a list of datetime objects in ascending order.
+import datetime
+list = [datetime.datetime(2020, 8,  5), datetime.datetime(2019, 7, 14)]
+list.sort()
+print(f"Sorted List: {list}")
 
 
 # 4. Create a dictionary representing a person with keys like 'name', 'age', 'country', and print each key-value pair.
@@ -194,8 +205,6 @@ print(cum_sum(list))
 
 # 19. Write a program that extracts all the email addresses from a given text.
 import re
-text = "Please send your resume to info@company.com or contact us at support@company.net. We will be in touch soon."
-
 text = "Please send your resume to info@company.com or john.doe@example.com"
 emails = re.findall('[\w\.-]+@[\w\.-]+\.\w+', text)
 print(emails)

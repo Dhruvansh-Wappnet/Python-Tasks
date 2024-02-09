@@ -6,12 +6,18 @@ print("Current Date & Time: ", current_date_time)
 
 # 2. Write a function to check if a given year is a leap year using the datetime module.
 import datetime
-def check_leap_year(date):
-    if (date.year % 4 == 0 and date.year % 100 != 0) or (date.year % 400 == 0):
+
+def is_leap_year(year):  
+    if(datetime(year, 2, 29)):
         return True
     else:
         return False
-check_leap_year(datetime.datetime.today())
+
+year = 2024
+if is_leap_year(year):
+    print(f"{year} is a leap year.")
+else:
+    print(f"{year} is not a leap year.")
 
 
 # 3. Write a program that sorts a list of datetime objects in ascending order.
@@ -68,14 +74,19 @@ print(count_chars(string))
 
 
 # 8. Write a program that removes duplicates from a list.
-list = [1,2,3,1,2,4]
-
-for items in list:
-    new_list = []
-    if items  not in new_list:
-        new_list.append(items)
+# Method 1
+# list = [1,2,3,1,2,4]
+# new_list = []
+# for items in list:
+#     if items  not in new_list:
+#         new_list.append(items)
         
-print(new_list)
+# print(new_list)
+
+# Method 2
+list = [1,2,3,1,2,4]
+set1 = set(list)
+print(list(set1))
 
 
 # 9. Create a function that takes a list of strings as input and returns a set containing unique words across all the strings.
@@ -93,7 +104,7 @@ print(unique_words(strings))
 
 # 10. Write a program that counts the occurrences of words in a given string and stores them in a dictionary.
 word_count = {}
-string = input("Enter a string: ")
+string = list(input("Enter a string: "))
 
 for word in string.split():
     if word in word_count:
@@ -113,27 +124,29 @@ print(string.title())
 def total_length(list):
     total = 0
     for item in list:
-        total += len(item)
+        if type(item) == str:
+            total += 1
     return total
 
-strings = ["Hello", "World", "Python"]
+strings = ["Hello", "World", "Python", 4, 5]
 print(total_length(strings))
 
 
 # 13. Write a program that finds the most common element in a list.
-list = [9,1,0,6,6,2,0,8,2,1]
+lst = [9,1,0,6,6,2,0,8,2,1]
 
-for i in list:
-    dict = {}
-    if i in dict:
-        dict[i] += 1
-    else:
-        dict[i]=1
-print(dict)
-max_count = max(dict.values())
-for x in dict:
-    if dict[x] == max_count:
-        print(x)
+print(max(lst, key = lst.count))
+# for i in lst:
+#     dict = {}
+#     if i in dict:
+#         dict[i] += 1
+#     else:
+#         dict[i]=1
+# print(dict)
+# max_count = max(dict.values())
+# for x in dict:
+#     if dict[x] == max_count:
+#         print(x)
 
     
 # 14. Create a function that checks if two lists have any common elements.
@@ -151,20 +164,13 @@ print(common_elements(list1, list2))
 
 
 # 15. Write a program that converts a list of tuples into a dictionary.
-list = [(1,2,3,4),(5,6,7,8)]
-for key in range(len(list) - 1):
-    dict = {}
-    for value in range(len(list[0])):
-        dict[list[key][value]] = list[key + 1][value]
-
-print(dict)
+list_of_tuple =[(1, 'a'), (2, 'b'), (3, 'c')]
+print(dict(list_of_tuple))
 
 
 # 16. Create a function that removes all occurrences of a specified key from a dictionary.
 def remove_key(dictionary, key):
-    while key in dictionary:
-        del dictionary[key]
-    return dictionary
+    del dictionary[key]
 
 person = {'name': 'John',
           'age': 25,
